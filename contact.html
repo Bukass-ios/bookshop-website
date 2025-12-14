@@ -11,7 +11,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html">Bookshop</a>
-      <nav class="nav" id="mainNav">
+      <nav class="nav" id="mainNav" aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="shop.html">Shop</a>
         <a href="about.html">About</a>
@@ -19,7 +19,7 @@
       </nav>
       <div class="header-actions">
         <button id="cartToggle" class="cart-btn" aria-label="Open cart">Cart (<span id="cartCount">0</span>)</button>
-        <button id="hamburger" class="hamburger" aria-label="Open menu">☰</button>
+        <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">☰</button>
       </div>
     </div>
   </header>
@@ -30,7 +30,7 @@
       <div>
         <h2>Get in touch</h2>
         <p>Email: hello@bookshop.example</p>
-        <p>Phone: +1 555-123-4567</p>
+        <p>Phone: +233 1-123-4567</p>
         <div class="socials">
           <a href="#" aria-label="Facebook">Facebook</a>
           <a href="#" aria-label="Instagram">Instagram</a>
@@ -53,7 +53,7 @@
     <section>
       <h2>Store Location</h2>
       <div class="mapwrap">
-        <iframe title="Store location" src="https://www.google.com/maps?q=manhattan+nyc&output=embed" loading="lazy"></iframe>
+        <iframe title="Store location" src="https://www.google.com/maps?q=Aliu+Mahama+Stadium+Tamale&output=embed" loading="lazy"></iframe>
       </div>
     </section>
   </main>

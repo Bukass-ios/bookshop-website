@@ -11,7 +11,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html">Bookshop</a>
-      <nav class="nav" id="mainNav">
+      <nav class="nav" id="mainNav" aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="shop.html">Shop</a>
         <a href="about.html" aria-current="page">About</a>
@@ -19,7 +19,7 @@
       </nav>
       <div class="header-actions">
         <button id="cartToggle" class="cart-btn" aria-label="Open cart">Cart (<span id="cartCount">0</span>)</button>
-        <button id="hamburger" class="hamburger" aria-label="Open menu">☰</button>
+        <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">☰</button>
       </div>
     </div>
   </header>

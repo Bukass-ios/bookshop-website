@@ -133,7 +133,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Carousel for featured books
-  function initCarousel(){ const track = document.getElementById('carouselTrack'); if(!track) return; const featured = BOOKS.slice(0,6); featured.forEach(b=>{ const el = document.createElement('div'); el.className='book-card'; el.style.minWidth='240px'; el.innerHTML = `<img src="${b.image}" alt="${escapeHtml(b.title)}"><div class="meta"><div class="book-title">${escapeHtml(b.title)}</div><div class="book-author">${escapeHtml(b.author)}</div></div>`; track.appendChild(el); });
+  function initCarousel(){ const track = document.getElementById('carouselTrack'); if(!track) return; const featured = BOOKS.slice(0,6); featured.forEach(b=>{ const el = document.createElement('div'); el.className='book-card'; el.style.minWidth='240px';
+      // Make featured items clickable like other book cards and lazy-load images
+      el.innerHTML = `<a href="book.html?id=${b.id}" class="book-link"><img src="${b.image}" alt="${escapeHtml(b.title)} cover" loading="lazy"></a><div class="meta"><div class="book-title">${escapeHtml(b.title)}</div><div class="book-author">${escapeHtml(b.author)}</div></div>`;
+      track.appendChild(el);
+    });
     const prev = document.querySelector('.carousel-prev'); const next = document.querySelector('.carousel-next'); let idx=0; const step = 1; const itemW = 240 + 16; function move(i){ idx=Math.max(0,Math.min(i,featured.length-1)); track.style.transform=`translateX(-${idx*itemW}px)` }
     if(prev) prev.addEventListener('click',()=>{ move(idx-1); resetAuto(); }); if(next) next.addEventListener('click',()=>{ move(idx+1); resetAuto(); });
     // autoplay
@@ -203,11 +207,30 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('checkoutMsg').textContent='Opening WhatsApp…';
     }); }
 
-  // Hamburger
-  const hamburger = document.getElementById('hamburger'); if(hamburger){ hamburger.addEventListener('click', ()=>{ const nav = document.getElementById('mainNav'); nav.classList.toggle('open'); }); }
+  // Hamburger — toggle mobile nav and keep ARIA state in sync
+  const hamburger = document.getElementById('hamburger');
+  if(hamburger){
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-controls', 'mainNav');
+    hamburger.addEventListener('click', ()=>{
+      const nav = document.getElementById('mainNav');
+      if(!nav) return;
+      const isOpen = nav.classList.toggle('open');
+      // update ARIA for screen readers
+      hamburger.setAttribute('aria-expanded', String(!!isOpen));
+    });
+  }
 
   // Close mobile nav when a nav link is clicked (better mobile UX)
-  document.querySelectorAll('.nav a').forEach(a=>{ a.addEventListener('click', ()=>{ const nav = document.getElementById('mainNav'); if(nav && nav.classList.contains('open')) nav.classList.remove('open'); }); });
+  document.querySelectorAll('.nav a').forEach(a=>{
+    a.addEventListener('click', ()=>{
+      const nav = document.getElementById('mainNav');
+      if(nav && nav.classList.contains('open')){
+        nav.classList.remove('open');
+        const hb = document.getElementById('hamburger'); if(hb) hb.setAttribute('aria-expanded','false');
+      }
+    });
+  });
 
   // expose key helpers for pages like book.html to reuse (preview page calls these)
   window.addToCart = (id, qty=1) => addToCart(id, qty);

@@ -208,4 +208,4 @@ BOOKS = [
   },
 ];
 
-SELLER_PHONE = "15551234567"; // E.164 without + — change to your WhatsApp number
+SELLER_PHONE = "=233206178482"; // E.164 without + — change to your WhatsApp number
