@@ -234,3 +234,27 @@ a:hover{color:var(--accent)}
 .test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
 
 .books-grid .empty{padding:2rem;text-align:center;color:var(--muted)}
+
+/* New Arrivals subtle highlight — keep same grid but with a small heading margin */
+.new-arrivals{padding-top:1rem;padding-bottom:1rem}
+.new-arrivals h2{margin-bottom:.6rem}
+.new-arrivals .book-card{transition:transform .2s ease, box-shadow .2s ease}
+.new-arrivals .book-card:hover{transform:translateY(-6px);box-shadow:0 18px 36px rgba(2,18,46,0.06)}
+
+/* Responsive image sizing for mobile: cap heights and keep aspect ratio */
+@media (max-width:600px){
+  .book-card img, .book-link img, .home-thumb img{height:220px;aspect-ratio:3/4;object-fit:cover}
+  .book-card img{height:220px}
+  .hero-visual img{max-height:360px;width:100%;height:auto;object-fit:cover}
+  .carousel-track .book-card{min-width:240px}
+  .cart-item img{width:72px;height:104px}
+}
+
+@media (max-width:420px){
+  .book-card img, .book-link img, .home-thumb img{height:180px}
+  .book-card img{height:180px}
+  .hero-visual img{max-height:260px;width:100%;height:auto}
+  .carousel-track .book-card{min-width:200px}
+  .cart-item img{width:64px;height:92px}
+  .book-cover{width:92%}
+}

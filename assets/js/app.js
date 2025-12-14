@@ -117,6 +117,13 @@ document.addEventListener('DOMContentLoaded', () => {
     container.appendChild(card);
   }); }
 
+  // Render New Arrivals (latest books) — shows the last 4 items from BOOKS
+  function renderNewArrivals(){ const container = document.getElementById('newArrivals'); if(!container) return; container.innerHTML=''; const arrivals = (BOOKS || []).slice(-4).reverse(); arrivals.forEach(b=>{
+    const card = document.createElement('article'); card.className='book-card';
+    card.innerHTML = `<a href="book.html?id=${b.id}" class="book-link"><img src="${b.image}" alt="${escapeHtml(b.title)} cover" loading="lazy"></a><div class="meta"><div class="book-title">${escapeHtml(b.title)}</div><div class="book-author">${escapeHtml(b.author)}</div></div><div class="book-footer"><div class="price">₵${b.price.toFixed(2)}</div><div><button class="btn add" data-id="${b.id}">Add to Cart</button></div></div>`;
+    container.appendChild(card);
+  }); }
+
   function renderBooks(filter={q:'',category:''}){
     if(!hasBooksGrid) return;
     loadingEl.style.display='block'; booksGrid.innerHTML=''; setTimeout(()=>{ // simulate slight load
@@ -239,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.showToast = (msg) => showToast(msg);
 
   // initialize
-  populateCategories(); renderBooks({}); initCarousel(); renderHomePicks(); updateCartUI();
+  populateCategories(); renderBooks({}); initCarousel(); renderHomePicks(); renderNewArrivals(); updateCartUI();
 
   // Add fade-in to main content areas for nicer entrance
   // Back to top button: create and wire show/hide + smooth scroll
