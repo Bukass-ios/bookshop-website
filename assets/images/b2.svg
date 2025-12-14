@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="420" viewBox="0 0 300 420">
+  <rect width="100%" height="100%" fill="#fff8ef"/>
+  <rect x="18" y="18" width="264" height="384" rx="6" fill="#f29f05" />
+  <text x="150" y="120" font-family="Georgia, serif" font-size="20" fill="#fff" font-weight="700" text-anchor="middle">The Quiet</text>
+  <text x="150" y="150" font-family="Georgia" font-size="14" fill="#fff" text-anchor="middle">Science</text>
+  <text x="150" y="320" font-family="Georgia" font-size="12" fill="#fff" text-anchor="middle">L. Grant</text>
+</svg>

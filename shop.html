@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bookshop — Shop</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script defer src="assets/js/data.js"></script>
+  <script defer src="assets/js/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">Bookshop</a>
+      <nav class="nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="shop.html" aria-current="page">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button id="cartToggle" class="cart-btn" aria-label="Open cart">Cart (<span id="cartCount">0</span>)</button>
+        <button id="hamburger" class="hamburger" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="shop-controls">
+      <div class="search-wrap">
+        <input id="searchInput" type="search" placeholder="Search by title or author" aria-label="Search books">
+      </div>
+      <div class="filters">
+        <select id="categoryFilter" aria-label="Filter by category">
+          <option value="">All Categories</option>
+        </select>
+      </div>
+    </section>
+
+    <section>
+      <h2>Books</h2>
+      <div id="booksGrid" class="books-grid" aria-live="polite"></div>
+      <div id="loading" class="loading">Loading books…</div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">Bookshop</div>
+          <p class="muted">Curated books, fast delivery, and community events — find your next great read.</p>
+        </div>
+
+        <div>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-newsletter">
+            <label class="muted">Join our newsletter</label>
+            <form id="footerNewsletterForm"><input id="footerNewsletterEmail" type="email" placeholder="you@example.com"><button class="btn" type="submit">Subscribe</button></form>
+            <p id="footerNewsMsg" class="muted"></p>
+          </div>
+          <div style="margin-top:.6rem" class="footer-socials">
+              <a class="social-icon" href="#" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><text x="50%" y="60%" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="currentColor">f</text></svg>
+              </a>
+              <a class="social-icon" href="#" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="0"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg>
+              </a>
+              <a class="social-icon" href="#" aria-label="Twitter">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M22 5.9c-.6.3-1.1.4-1.8.5.7-.4 1.1-1 1.3-1.7-.6.4-1.3.7-2 .9C18.8 4.7 18 4.5 17.2 4.5c-1.4 0-2.4 1.1-2.4 2.5 0 .2 0 .5.1.7-2-.1-3.7-1.1-4.9-2.6-.2.3-.3.7-.3 1.1 0 .9.5 1.7 1.3 2.1-.5 0-1-.1-1.4-.4v.1c0 1.3.9 2.4 2.1 2.6-.4.1-.8.1-1.2.1-.3 0-.6 0-.9-.1.6 1.9 2.3 3.2 4.3 3.2-1.6 1.2-3.6 1.9-5.8 1.9-.4 0-.8 0-1.2-.1 2.1 1.4 4.6 2.2 7.3 2.2 8.8 0 13.6-7.3 13.6-13.6v-.6c.9-.6 1.6-1.4 2.1-2.3-.8.4-1.7.6-2.6.8z" fill="currentColor"/></svg>
+              </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; <span id="year2"></span> Bookshop</div>
+        <div class="muted">Made with care • Local delivery available</div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="cartSlide" class="cart-slide" aria-hidden="true">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button id="closeCart" aria-label="Close cart">✕</button>
+    </div>
+    <div id="cartContents" class="cart-contents"></div>
+    <div class="cart-footer">
+    <div class="cart-total">Total: ₵<span id="cartTotal">0.00</span></div>
+      <div class="cart-actions">
+        <a href="cart.html" class="btn outline">View Cart</a>
+        <a href="checkout.html" class="btn">Checkout</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="600" viewBox="0 0 400 600">
+  <rect width="100%" height="100%" fill="#f0fff7"/>
+  <rect x="24" y="40" width="352" height="520" rx="8" fill="#dff9ee" stroke="#bff0d6" />
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="34" fill="#0b6b4b" font-family="sans-serif">The Quiet Science</text>
+</svg>

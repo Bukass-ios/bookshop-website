@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="420" viewBox="0 0 300 420">
+  <rect width="100%" height="100%" fill="#f8fafc"/>
+  <rect x="18" y="18" width="264" height="384" rx="6" fill="#064e3b" />
+  <text x="150" y="140" font-family="Georgia" font-size="20" fill="#fff" font-weight="700" text-anchor="middle">The</text>
+  <text x="150" y="170" font-family="Georgia" font-size="20" fill="#fff" font-weight="700" text-anchor="middle">Economist</text>
+  <text x="150" y="320" font-family="Georgia" font-size="12" fill="#fff" text-anchor="middle">R. Singh</text>
+</svg>

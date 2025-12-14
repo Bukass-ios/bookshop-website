@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="420" viewBox="0 0 300 420">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#0b66d0"/><stop offset="1" stop-color="#12b886"/></linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="#f6fbff"/>
+  <rect x="18" y="18" width="264" height="384" rx="8" fill="url(#g1)" />
+  <text x="150" y="120" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#fff" font-weight="700" text-anchor="middle">Skyward</text>
+  <text x="150" y="150" font-family="Arial" font-size="14" fill="#e6f6f9" text-anchor="middle">Paths</text>
+  <text x="150" y="320" font-family="Arial" font-size="12" fill="#fff" text-anchor="middle">A. Rivers</text>
+</svg>

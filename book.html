@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Book Preview</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script defer src="assets/js/data.js"></script>
+  <script defer src="assets/js/app.js"></script>
+  <script defer src="assets/js/book.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">Bookshop</a>
+      <nav class="nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button id="cartToggle" class="cart-btn" aria-label="Open cart">Cart (<span id="cartCount">0</span>)</button>
+        <button id="hamburger" class="hamburger" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="bookPreview"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">Bookshop</div>
+          <p class="muted">Curated books, fast delivery, and community events — find your next great read.</p>
+        </div>
+
+        <div>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-newsletter">
+            <label class="muted">Join our newsletter</label>
+            <form id="footerNewsletterForm"><input id="footerNewsletterEmail" type="email" placeholder="you@example.com"><button class="btn" type="submit">Subscribe</button></form>
+            <p id="footerNewsMsg" class="muted"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; <span id="year4"></span> Bookshop</div>
+        <div class="muted">Made with care • Local delivery available</div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="cartSlide" class="cart-slide" aria-hidden="true">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button id="closeCart" aria-label="Close cart">✕</button>
+    </div>
+    <div id="cartContents" class="cart-contents"></div>
+    <div class="cart-footer">
+      <div class="cart-total">Total: ₵<span id="cartTotal">0.00</span></div>
+      <div class="cart-actions">
+        <a href="cart.html" class="btn outline">View Cart</a>
+        <a href="checkout.html" class="btn">Checkout</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
