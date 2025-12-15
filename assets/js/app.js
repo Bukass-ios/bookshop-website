@@ -154,12 +154,34 @@ document.addEventListener('DOMContentLoaded', () => {
     startAuto();
   }
 
-  // Event delegation
-  document.body.addEventListener('click', (e)=>{
-    if(e.target.matches('.btn.add')){ const id=e.target.dataset.id; addToCart(id,1); }
-    if(e.target.matches('#cartToggle')){ cartSlide.classList.add('open'); cartSlide.setAttribute('aria-hidden','false'); }
-    if(e.target.matches('#closeCart')){ cartSlide.classList.remove('open'); cartSlide.setAttribute('aria-hidden','true'); }
-    if(e.target.matches('[data-remove]')){ removeFromCart(e.target.dataset.remove); }
+  // Event delegation (use closest so clicks on inner elements work)
+  document.body.addEventListener('click', (e) => {
+    const addBtn = e.target.closest && e.target.closest('.btn.add');
+    if (addBtn) { const id = addBtn.dataset.id; addToCart(id, 1); return; }
+
+    const cartBtn = e.target.closest && e.target.closest('#cartToggle');
+    if (cartBtn) {
+      if (cartSlide) {
+        cartSlide.classList.add('open');
+        cartSlide.setAttribute('aria-hidden', 'false');
+      } else {
+        // fallback: go to cart page when slide panel isn't present
+        window.location.href = 'cart.html';
+      }
+      return;
+    }
+
+    const closeBtn = e.target.closest && e.target.closest('#closeCart');
+    if (closeBtn) {
+      if (cartSlide) {
+        cartSlide.classList.remove('open');
+        cartSlide.setAttribute('aria-hidden', 'true');
+      }
+      return;
+    }
+
+    const removeBtn = e.target.closest && e.target.closest('[data-remove]');
+    if (removeBtn) { removeFromCart(removeBtn.dataset.remove); return; }
   });
 
   document.body.addEventListener('input', (e)=>{ if(e.target.classList.contains('qty-input')){ const id = e.target.dataset.id; const val = parseInt(e.target.value||0,10); setQty(id, isNaN(val)?0:val); } });
