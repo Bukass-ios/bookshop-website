@@ -199,20 +199,72 @@ document.addEventListener('DOMContentLoaded', () => {
   // footer newsletter forms (multiple pages) — attach to all forms with id footerNewsletterForm
   document.querySelectorAll('#footerNewsletterForm').forEach(frm=>{ frm.addEventListener('submit', e=>{ e.preventDefault(); const input = frm.querySelector('input[type="email"]'); const msgEl = frm.parentElement.querySelector('#footerNewsMsg') || frm.parentElement.querySelector('.muted'); if(input && msgEl){ msgEl.textContent = `Thanks — ${input.value} subscribed!`; } frm.reset(); }); });
 
-  // Contact form
-  const contactForm = document.getElementById('contactForm'); if(contactForm){ contactForm.addEventListener('submit', e=>{ e.preventDefault(); document.getElementById('contactMsg').textContent = 'Message sent — we will reply soon.'; contactForm.reset(); }); }
 
-  // Checkout form
-  const checkoutForm = document.getElementById('checkoutForm'); if(checkoutForm){ checkoutForm.addEventListener('submit', e=>{ e.preventDefault(); const name = document.getElementById('custName').value; const phone = document.getElementById('custPhone').value; const addr = document.getElementById('custAddress').value; const items = cartItems(); if(!items.length){ document.getElementById('checkoutMsg').textContent='Your cart is empty.'; return; }
-      // Build message
-      let msg = `Order from Bookshop%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AAddress: ${encodeURIComponent(addr)}%0A%0AItems:%0A`;
-      items.forEach(it=>{ msg += `${encodeURIComponent(it.qty)} x ${encodeURIComponent(it.title)} — ${encodeURIComponent('₵' + (it.price*it.qty).toFixed(2))}%0A`; });
-      msg += `%0ATotal: ${encodeURIComponent('₵' + cartTotalValue().toFixed(2))}`;
-      // Open WhatsApp (SELLER_PHONE is global from data.js)
-      const wa = `https://wa.me/${SELLER_PHONE}?text=${msg}`;
-      window.open(wa, '_blank');
-      document.getElementById('checkoutMsg').textContent='Opening WhatsApp…';
-    }); }
+  // Contact form
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('contactMsg').textContent =
+      'Message sent — we will reply soon.';
+    contactForm.reset();
+  });
+}
+
+// Checkout form
+const checkoutForm = document.getElementById('checkoutForm');
+
+if (checkoutForm) {
+  checkoutForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('custName').value.trim();
+    const phone = document.getElementById('custPhone').value.trim();
+    const address = document.getElementById('custAddress').value.trim();
+    const msgBox = document.getElementById('checkoutMsg');
+
+    // Validation
+    if (!name || !phone || !address) {
+      msgBox.textContent = 'Please fill in all required fields.';
+      return;
+    }
+
+    const items = cartItems();
+    if (!items.length) {
+      msgBox.textContent = 'Your cart is empty.';
+      return;
+    }
+
+    // Build WhatsApp message
+    let plainMsg =
+      `Order from Bookshop\n` +
+      `Name: ${name}\n` +
+      `Phone: ${phone}\n` +
+      `Address: ${address}\n\n` +
+      `Items:\n`;
+
+    items.forEach((it) => {
+      plainMsg +=
+        `- ${it.title}` +
+        `${it.author ? ' by ' + it.author : ''}` +
+        ` — ₵${it.price.toFixed(2)} × ${it.qty}` +
+        ` = ₵${(it.price * it.qty).toFixed(2)}\n`;
+    });
+
+    plainMsg += `\nTotal: ₵${cartTotalValue().toFixed(2)}\n\nThank you!`;
+
+    // Encode once
+    const encodedMsg = encodeURIComponent(plainMsg);
+
+    // Open WhatsApp
+    const waUrl = `https://wa.me/${SELLER_PHONE}?text=${encodedMsg}`;
+    window.open(waUrl, '_blank');
+
+    msgBox.textContent = 'Redirecting to WhatsApp...';
+  });
+}
+
+
 
   // Hamburger — toggle mobile nav and keep ARIA state in sync
   const hamburger = document.getElementById('hamburger');
